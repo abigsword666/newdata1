@@ -1,0 +1,217 @@
+import tkinter as tk
+import tkinter.messagebox
+import pickle
+
+# 窗口
+window = tk.Tk()
+window.title('欢迎进入登录界面')
+window.geometry('773x755')
+# 画布放置图片
+canvas = tk.Canvas(window, height=773, width=755)
+imagefile = tk.PhotoImage(file='D:/t013.gif')
+image = canvas.create_image(0, 0, anchor='nw', image=imagefile)
+canvas.pack(side='top')
+# 标签 用户名密码
+tk.Label(window, text='免费时长',font=('Aial',16)).place(x=60, y=30)
+tk.Label(window, text='分钟',font=('Aial',16)).place(x=241, y=30)
+tk.Label(window, text='必填！',font=('Aial',16),fg='red').place(x=316, y=30)
+tk.Label(window, text='前',font=('Aial',16)).place(x=60, y=85)
+tk.Label(window, text='小时每小时',font=('Aial',16)).place(x=160, y=85)
+tk.Label(window, text='元 后每小时',font=('Aial',16)).place(x=370, y=85)
+tk.Label(window, text='元',font=('Aial',16)).place(x=595, y=85)
+tk.Label(window, text='必填！',font=('Aial',16),fg='red').place(x=643, y=85)
+tk.Label(window, text='夜间每小时',font=('Aial',16)).place(x=60, y=140)
+tk.Label(window, text='元',font=('Aial',16)).place(x=272, y=140)
+tk.Label(window, text='必填！',font=('Aial',16),fg='red').place(x=320, y=140)
+tk.Label(window, text='每日封顶',font=('Aial',16)).place(x=60, y=195)
+tk.Label(window, text='元',font=('Aial',16)).place(x=245, y=195)
+tk.Label(window, text='必填！',font=('Aial',16),fg='red').place(x=293, y=195)
+tk.Label(window, text='星期一 特殊时段价格',font=('Aial',16)).place(x=60, y=250)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=250)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=250)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=250)
+tk.Label(window, text='星期二 特殊时段价格',font=('Aial',16)).place(x=60, y=305)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=305)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=305)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=305)
+tk.Label(window, text='星期三 特殊时段价格',font=('Aial',16)).place(x=60, y=360)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=360)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=360)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=360)
+tk.Label(window, text='星期四 特殊时段价格',font=('Aial',16)).place(x=60, y=415)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=415)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=415)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=415)
+tk.Label(window, text='星期五 特殊时段价格',font=('Aial',16)).place(x=60, y=470)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=470)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=470)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=470)
+tk.Label(window, text='星期六 特殊时段价格',font=('Aial',16)).place(x=60, y=525)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=525)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=525)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=525)
+tk.Label(window, text='星期日 特殊时段价格',font=('Aial',16)).place(x=60, y=580)
+tk.Label(window, text='元 自',font=('Aial',16)).place(x=393, y=580)
+tk.Label(window, text='时 至',font=('Aial',16)).place(x=536, y=580)
+tk.Label(window, text='时',font=('Aial',16)).place(x=679, y=580)
+
+#小时输入框
+var_usr_hour1 = tk.StringVar()
+entry_usr_hour1 = tk.Entry(window, textvariable=var_usr_hour1,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour1.place(width=65,height=32,x=175, y=30)
+
+var_usr_hour2 = tk.StringVar()
+entry_usr_hour2 = tk.Entry(window, textvariable=var_usr_hour2,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour2.place(width=65,height=32,x=94, y=85)
+
+var_usr_hour3 = tk.StringVar()
+entry_usr_hour3 = tk.Entry(window, textvariable=var_usr_hour3,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour3.place(width=65,height=32,x=469, y=250)
+
+var_usr_hour4 = tk.StringVar()
+entry_usr_hour4 = tk.Entry(window, textvariable=var_usr_hour4,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour4.place(width=65,height=32,x=612, y=250)
+
+var_usr_hour5 = tk.StringVar()
+entry_usr_hour5 = tk.Entry(window, textvariable=var_usr_hour5,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour5.place(width=65,height=32,x=469, y=305)
+
+var_usr_hour6 = tk.StringVar()
+entry_usr_hour6 = tk.Entry(window, textvariable=var_usr_hour6,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour6.place(width=65,height=32,x=612, y=305)
+
+var_usr_hour7 = tk.StringVar()
+entry_usr_hour7 = tk.Entry(window, textvariable=var_usr_hour7,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour7.place(width=65,height=32,x=469, y=360)
+
+var_usr_hour8 = tk.StringVar()
+entry_usr_hour8 = tk.Entry(window, textvariable=var_usr_hour8,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour8.place(width=65,height=32,x=612, y=360)
+
+var_usr_hour9 = tk.StringVar()
+entry_usr_hour9 = tk.Entry(window, textvariable=var_usr_hour9,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour9.place(width=65,height=32,x=469, y=415)
+
+var_usr_hour10 = tk.StringVar()
+entry_usr_hour10 = tk.Entry(window, textvariable=var_usr_hour10,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour10.place(width=65,height=32,x=612, y=415)
+
+var_usr_hour11 = tk.StringVar()
+entry_usr_hour11 = tk.Entry(window, textvariable=var_usr_hour11,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour11.place(width=65,height=32,x=469, y=470)
+
+var_usr_hour12 = tk.StringVar()
+entry_usr_hour12 = tk.Entry(window, textvariable=var_usr_hour12,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour12.place(width=65,height=32,x=612, y=470)
+
+var_usr_hour13 = tk.StringVar()
+entry_usr_hour13 = tk.Entry(window, textvariable=var_usr_hour13,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour13.place(width=65,height=32,x=469, y=525)
+
+var_usr_hour14 = tk.StringVar()
+entry_usr_hour14 = tk.Entry(window, textvariable=var_usr_hour14,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour14.place(width=65,height=32,x=612, y=525)
+
+var_usr_hour15 = tk.StringVar()
+entry_usr_hour15 = tk.Entry(window, textvariable=var_usr_hour15,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour15.place(width=65,height=32,x=469, y=580)
+
+var_usr_hour16 = tk.StringVar()
+entry_usr_hour16 = tk.Entry(window, textvariable=var_usr_hour16,highlightcolor='red',highlightthickness=0.5)
+entry_usr_hour16.place(width=65,height=32,x=612, y=580)
+#金钱输入框
+var_usr_money1 = tk.StringVar()
+entry_usr_money1 = tk.Entry(window, textvariable=var_usr_money1,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money1.place(width=65,height=32,x=303, y=85)
+
+var_usr_money2 = tk.StringVar()
+entry_usr_money2 = tk.Entry(window, textvariable=var_usr_money2,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money2.place(width=65,height=32,x=527, y=85)
+
+var_usr_money3 = tk.StringVar()
+entry_usr_money3 = tk.Entry(window, textvariable=var_usr_money3,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money3.place(width=65,height=32,x=204, y=140)
+
+var_usr_money4 = tk.StringVar()
+entry_usr_money4 = tk.Entry(window, textvariable=var_usr_money4,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money4.place(width=65,height=32,x=177, y=195)
+
+var_usr_money5 = tk.StringVar()
+entry_usr_money5 = tk.Entry(window, textvariable=var_usr_money5,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money5.place(width=65,height=32,x=325, y=250)
+
+var_usr_money6 = tk.StringVar()
+entry_usr_money6 = tk.Entry(window, textvariable=var_usr_money6,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money6.place(width=65,height=32,x=325, y=305)
+
+var_usr_money7 = tk.StringVar()
+entry_usr_money7 = tk.Entry(window, textvariable=var_usr_money7,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money7.place(width=65,height=32,x=325, y=360)
+
+var_usr_money8 = tk.StringVar()
+entry_usr_money8 = tk.Entry(window, textvariable=var_usr_money8,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money8.place(width=65,height=32,x=325, y=415)
+
+var_usr_money9 = tk.StringVar()
+entry_usr_money9 = tk.Entry(window, textvariable=var_usr_money9,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money9.place(width=65,height=32,x=325, y=470)
+
+var_usr_money10 = tk.StringVar()
+entry_usr_money10 = tk.Entry(window, textvariable=var_usr_money10,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money10.place(width=65,height=32,x=325, y=525)
+
+var_usr_money11 = tk.StringVar()
+entry_usr_money11 = tk.Entry(window, textvariable=var_usr_money11,highlightcolor='red',highlightthickness=0.5)
+entry_usr_money11.place(width=65,height=32,x=325, y=580)
+
+def usr_submit():
+    # 获取输入框内的内容
+    time1 = var_usr_hour1.get()
+    time2 = var_usr_hour2.get()
+    time3 = var_usr_hour3.get()
+    time4 = var_usr_hour4.get()
+    time5 = var_usr_hour5.get()
+    time6 = var_usr_hour6.get()
+    time7 = var_usr_hour7.get()
+    time8 = var_usr_hour8.get()
+    time9 = var_usr_hour9.get()
+    time10 = var_usr_hour10.get()
+    time11 = var_usr_hour11.get()
+    time12 = var_usr_hour12.get()
+    time13 = var_usr_hour13.get()
+    time14 = var_usr_hour14.get()
+    time15 = var_usr_hour15.get()
+    time16 = var_usr_hour16.get()
+    rmb1= var_usr_money1.get()
+    rmb2 = var_usr_money2.get()
+    rmb3 = var_usr_money3.get()
+    rmb4 = var_usr_money4.get()
+    rmb5 = var_usr_money5.get()
+    rmb6 = var_usr_money6.get()
+    rmb7 = var_usr_money7.get()
+    rmb8 = var_usr_money8.get()
+    rmb9 = var_usr_money9.get()
+    rmb10 = var_usr_money10.get()
+    rmb11 = var_usr_money11.get()
+
+        # 检查用户名存在、密码为空、密码前后不一致
+    if time1==''or time2=='' or rmb1=='' or rmb2=='' or rmb3=='' or rmb4=='':
+        tk.messagebox.showerror('错误', '信息未填写完整')
+    else:
+        exist_usr_info[nn] = np
+        with open('usr_info.pickle', 'wb') as usr_file:
+            pickle.dump(exist_usr_info, usr_file)
+        tk.messagebox.showinfo('欢迎', '注册成功')
+
+# 退出的函数
+def usr_sign_quit():
+    window.destroy()
+
+# 登录 注册按钮
+bt_login = tk.Button(window, text='提交', width=15,height=2,command=usr_submit)
+bt_login.place(x=190, y=660)
+
+bt_logquit = tk.Button(window, text='退出', width=15,height=2,command=usr_sign_quit)
+bt_logquit.place(x=430, y=660)
+# 主循环
+window.mainloop()
